@@ -1,27 +1,34 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * @author Victor Garvalov
  */
 
 public class Skill {
-    public final String name;
-    public int level;
 
+    public static List<Integer> skillsScore(List<String> skills, List<Project> projects, List<Contributor> contributors) {
+        List<Integer> ponderate = new ArrayList<>();
+        for (String skill : skills ) {
+            int averageDemand = 0;
+            int ponderateInt = 0;
+            for(Project p : projects) {
+                if(p.skills.containsKey(skill)) {
+                    averageDemand += p.skills.get(skill);
+                    ponderateInt++;
+                }
+            }
 
-    public Skill(String name, int level) {
-        this.name = name;
-        this.level = level;
-    }
+            averageDemand /= projects.size();
 
-    public void increaseSkill() {
-        level++;
-    }
-
-    public int getSkill() {
-        return level;
-    }
-
-    @Override
-    public String toString() {
-        return name;
+            for(Contributor c : contributors) {
+                if(c.skills.containsKey(skill) && c.skills.get(skill) < averageDemand) {
+                    ponderateInt++;
+                }
+            }
+            ponderate.add(ponderateInt);
+        }
+        return ponderate;
     }
 }
