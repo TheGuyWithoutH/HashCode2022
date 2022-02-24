@@ -39,6 +39,10 @@ public class Project {
         }
     }
 
+    public boolean isStarted() {
+        return isStarted;
+    }
+
     public boolean isFinished() {
         if(nDays == 0) {
             for(Contributor contributor : contributors) {
@@ -49,4 +53,6 @@ public class Project {
         }
         return false;
     }
+
+
 }
