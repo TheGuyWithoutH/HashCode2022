@@ -1,4 +1,4 @@
-package src; /**
+/**
  * @author Victor Garvalov
  */
 import java.io.*;
@@ -40,12 +40,11 @@ public class Main {
             int projScore  = sc.nextInt();
             int projDeadline  = sc.nextInt();
             int nRoles  = sc.nextInt();
-            List <Skill> skills = new ArrayList<>();
+            Map<String, Integer> skills = new HashMap<>();
             for (int j = 0; j < nRoles ; j++) {   //get info on required skill for project
                 String nameSK = sc.next();
                 int levelSK = sc.nextInt();
-                Skill SK = new Skill(nameSK,levelSK);
-                skills.add(SK);
+                skills.put(nameSK, levelSK);
             }
             Project proj = new Project(nameProj,nDays,projScore,projDeadline,nRoles,skills);
             projects.add(proj);
