@@ -23,7 +23,7 @@ public class Skill {
             averageDemand /= projects.size();
 
             for(Contributor c : contributors) {
-                if(c.skills.containsKey(skill) && c.skills.get(skill) < averageDemand) {
+                if((c.skills.containsKey(skill) && c.skills.get(skill) < averageDemand) || !c.skills.containsKey(skill)) {
                     ponderateInt++;
                 }
             }
