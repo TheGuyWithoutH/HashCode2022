@@ -50,6 +50,8 @@ public class Main {
             projects.add(proj);
         }
 
+        Solve.solve(contributors, projects, aS);
+
 
       /*
       int n      = sc.nextInt();        // read input as integer

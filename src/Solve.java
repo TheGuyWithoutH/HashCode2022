@@ -30,6 +30,8 @@ public class Solve {
 
         }
 
+        System.out.println(out.getString());
+
     }
 
 }
