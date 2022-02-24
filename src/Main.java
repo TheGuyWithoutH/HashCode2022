@@ -2,6 +2,7 @@ package src; /**
  * @author Victor Garvalov
  */
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -32,6 +33,7 @@ public class Main {
             Contributor cont = new Contributor(nameCon,skills);
             contributors.add(cont);
         }
+        ArrayList<String> aS = new ArrayList<String>(allSK);
         for (int i = 0; i <nProjects ; i++) { //get info on projects
             String nameProj = sc.next();
             int nDays  = sc.nextInt();
