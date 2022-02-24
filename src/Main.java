@@ -10,17 +10,27 @@ public class Main {
         MyScanner sc = new MyScanner();
         out = new PrintWriter(new BufferedOutputStream(System.out));
 
+        // INIT
+        List<Contributor> contributors = new ArrayList<>();
+        List<Project> projects = new ArrayList<>();
+        Set<String> allSK = new HashSet<>();
+
+
         int nContributors  = sc.nextInt();
         int nProjects  = sc.nextInt();
 
         for (int i = 0; i <nContributors ; i++) {  // get info on contr
             String nameCon = sc.next();
             int nSkill  = sc.nextInt();
+            Map<String, Integer> skills = new TreeMap<>();
             for (int j = 0; j < nSkill ; j++) {   //get info on skill
                 String nameSK = sc.next();
                 int levelSK = sc.nextInt();
-                // store map of pairs skill name -level with contributor name in Map
+                allSK.add(nameSK);                // add skill to all Skills
+                skills.put(nameSK,levelSK);
             }
+            Contributor cont = new Contributor(nameCon,skills);
+            contributors.add(cont);
         }
         for (int i = 0; i <nProjects ; i++) { //get info on projects
             String nameProj = sc.next();
@@ -28,11 +38,15 @@ public class Main {
             int projScore  = sc.nextInt();
             int projDeadline  = sc.nextInt();
             int nRoles  = sc.nextInt();
+            List <Skill> skills = new ArrayList<>();
             for (int j = 0; j < nRoles ; j++) {   //get info on required skill for project
                 String nameSK = sc.next();
                 int levelSK = sc.nextInt();
-                // store skill name-level in Map
+                Skill SK = new Skill(nameSK,levelSK);
+                skills.add(SK);
             }
+            Project proj = new Project(nameProj,nDays,projScore,projDeadline,nRoles,skills);
+            projects.add(proj);
         }
 
 
