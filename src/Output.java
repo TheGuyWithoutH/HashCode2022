@@ -1,6 +1,4 @@
-import java.lang.reflect.AnnotatedArrayType;
-import java.util.*;
-import java.lang.*;
+import java.util.ArrayList;
 
 /**
  * @author Victor Garvalov
@@ -13,14 +11,14 @@ public class Output {
 
     public void addProject(Project p, ArrayList<Contributor> contributors, int day){
         //Compute Score
-        int pTakes = p.timeTakes;
-        if(day+pTakes<p.bbd){score+=p.score;}
+        int pTakes = p.nDays;
+        if(day+pTakes<p.projDeadline){score+=p.projScore;}
         else{
-            int nS = score-(day+pTakes -p.bbd);
+            int nS = score-(day+pTakes -p.projDeadline);
             if(nS>0) score+= nS;
         }
         //Update Output String
-        outString += p.name + '\n' + allC(contributors) + '\n';
+        outString += p.nameProj + '\n' + allC(contributors) + '\n';
         numProjects++;
     }
 
@@ -30,7 +28,7 @@ public class Output {
     private String allC(ArrayList<Contributor> co){
         StringBuilder s = new StringBuilder();
         for(Contributor c : co){
-            s += c.name + ' ';
+            s.append(c.name).append(' ');
         }
         s.deleteCharAt(s.length()-1);
         return s.toString();
