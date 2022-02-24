@@ -1,4 +1,4 @@
-/**
+package src; /**
  * @author Victor Garvalov
  */
 import java.io.*;
@@ -15,6 +15,9 @@ public class Main {
         List<Contributor> contributors = new ArrayList<>();
         List<Project> projects = new ArrayList<>();
         Set<String> allSK = new HashSet<>();
+        List<Special> decreasingCosts= new ArrayList<>();
+
+
 
 
         int nContributors  = sc.nextInt();
@@ -40,6 +43,7 @@ public class Main {
             int projScore  = sc.nextInt();
             int projDeadline  = sc.nextInt();
             int nRoles  = sc.nextInt();
+
             Map<String, Integer> skills = new HashMap<>();
             for (int j = 0; j < nRoles ; j++) {   //get info on required skill for project
                 String nameSK = sc.next();
@@ -48,7 +52,13 @@ public class Main {
             }
             Project proj = new Project(nameProj,nDays,projScore,projDeadline,nRoles,skills);
             projects.add(proj);
+
+            double c = proj.cost();       // cost computation
+            Special pair = new Special(c,proj);
+            decreasingCosts.add(pair);
         }
+
+        Collections.sort(decreasingCosts);
 
         Solve.solve(contributors, projects, aS);
 
@@ -105,6 +115,8 @@ public class Main {
             }
             return str;
         }
+
+
 
 
     }

@@ -1,8 +1,12 @@
+package src;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 public class Solve {
+
 
     public static void solve(List<Contributor> contributors, List<Project> projects, List<String> skills){
         List<Project> toDo = new ArrayList<>(projects);
@@ -38,6 +42,16 @@ public class Solve {
 
         System.out.println(out.getString());
 
+    }
+    public List<Special> updateCosts(List<Project> projects){
+        List<Special> decreasingCosts= new ArrayList<>();
+        for(Project proj : projects) {
+            double c = proj.cost();       // cost computation
+            Special pair = new Special(c,proj);
+            decreasingCosts.add(pair);
+        }
+        Collections.sort(decreasingCosts);
+        return decreasingCosts;
     }
 
 }

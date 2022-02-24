@@ -1,3 +1,5 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ public class Project {
     public Map<String, Integer> skills ;
     private boolean isStarted;
     private List<Contributor> contributors;
+    public double cost =0;
 
     public Project(String nameProj, int nDays, int projScore, int projDeadline, int nRoles, Map<String, Integer> skills) {
         this.nameProj = nameProj;
@@ -54,5 +57,8 @@ public class Project {
         return false;
     }
 
-
+    public double cost(){
+        cost=(double) projScore/(nRoles*nDays);
+        return cost;
+    }
 }
