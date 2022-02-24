@@ -1,3 +1,5 @@
+package src;
+
 public class Pair<K, V> {
     public K p1;
     public V p2;

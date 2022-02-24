@@ -58,7 +58,7 @@ public class Project {
     }
 
     public double cost(){
-        cost=projScore/(nRoles*nDays);
+        cost=(double) projScore/(nRoles*nDays);
         return cost;
     }
 }

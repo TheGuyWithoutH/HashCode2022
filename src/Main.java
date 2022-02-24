@@ -115,7 +115,6 @@ public class Main {
             }
             return str;
         }
-        Collections.sort(decreasingCosts);
 
 
 
