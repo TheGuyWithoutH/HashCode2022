@@ -16,15 +16,21 @@ public class Solve {
 
             List<Pair<Project, List<Contributor>>> possibility =  ProjectChoice.dumbChoice(toDo.stream().filter(x -> !x.isStarted()).toList(), available);
 
-            possibility.get(0).p1.start(possibility.get(0).p2);
-            out.addProject(possibility.get(0).p1, possibility.get(0).p2, i);
+            if(!possibility.isEmpty()) {
+                possibility.get(0).p1.start(possibility.get(0).p2);
+                out.addProject(possibility.get(0).p1, possibility.get(0).p2, i);
+            }
+
+            List<Project> prjToRemove = new ArrayList<>();
 
             for (Project project : toDo) {
                 project.update();
                 if(project.isFinished()) {
-                    toDo.remove(project);
+                    prjToRemove.add(project);
                 }
             }
+
+            toDo.removeAll(prjToRemove);
 
             i++;
 

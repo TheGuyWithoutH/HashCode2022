@@ -34,7 +34,7 @@ public class Contributor {
     }
 
     public boolean available() {
-        return taken;
+        return !taken;
     }
 
     @Override

@@ -24,7 +24,7 @@ public class Output {
     }
 
     public int score(){return score;}
-    public String getString(){return numProjects+'\n'+outString;}
+    public String getString(){return Integer.toString(numProjects)+'\n'+outString;}
 
     private String allC(List<Contributor> co){
         StringBuilder s = new StringBuilder();

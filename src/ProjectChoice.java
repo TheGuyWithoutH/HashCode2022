@@ -11,12 +11,10 @@ public final class ProjectChoice {
             List<Contributor> contributors = new ArrayList<>();
 
             for (Contributor contributor : availableContributors) {
-                if(skills.size() == project.skills.size()) {
-                    break;
-                }
                 for(String skill : contributor.skills.keySet()) {
-                    if(skills.containsKey(skill)) {
+                    if(skills.containsKey(skill) && skills.get(skill) >= contributor.skills.get(skill)) {
                         contributors.add(contributor);
+                        skills.remove(skill);
                         break;
                     }
                 }
@@ -25,7 +23,7 @@ public final class ProjectChoice {
             choices.add(new Pair<>(project, contributors));
         }
 
-        return choices;
+        return choices.stream().filter(x -> !x.p2.isEmpty()).collect(Collectors.toList());
     }
 
     public static Map<Project, List<Contributor>> randomizedChoice(List<Project> todo, List<Contributor> availableContributors) {
