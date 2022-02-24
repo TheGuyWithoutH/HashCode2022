@@ -50,9 +50,6 @@ public class Main {
         }
 
 
-
-        out.println("");
-
       /*
       int n      = sc.nextInt();        // read input as integer
       long k     = sc.nextLong();       // read input as long
